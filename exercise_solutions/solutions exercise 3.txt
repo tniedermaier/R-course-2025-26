@@ -8,7 +8,11 @@ dat <- Orange #already included in R
 
 # Define colors for each tree group
 tree_colors <- as.numeric(Orange$Tree)
-palette_colors <- rainbow(length(unique(Orange$Tree)))
+palette_colors <- c("#9A241B",  # Dark red
+                    "#F4C91E",  # Yellow
+                    "#8BB3CB",  # Light blue
+                    "#1C078E",  # Dark blue
+                    "#747474")  # Medium gray
 palette_colors #Or:
 Orange$Tree |> unique() |> length() |> rainbow()
 
