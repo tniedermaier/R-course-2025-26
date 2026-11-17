@@ -307,7 +307,7 @@ xyplot(circumference ~ age,
 
 #1. Load the data in R.
 setwd("S:\\AG_Holle\\TN\\3_Lehre\\R-Kurs 2026\\data project (TN)")
-dat <- read.csv2("NHANES1.csv", sep=",") #Or interactively: read.csv2(file.choose())
+dat <- read.csv2("NHANES1.csv") #Or interactively: read.csv2(file.choose())
 
 #2. What is the dimension of the data set? How many rows (samples), and how many columns (variables) does the data set contain? What are the variable names of the data set?
 dim(dat)
