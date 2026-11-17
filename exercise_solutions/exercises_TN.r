@@ -306,8 +306,8 @@ xyplot(circumference ~ age,
 ## Task 1 (General):
 
 #1. Load the data in R.
-setwd("S:\\AG_Holle\\TN\\3_Lehre\\R-Kurs 2025_26")
-dat <- read.csv2("NHANES1.csv") #Or interactively: read.csv2(file.choose())
+setwd("S:\\AG_Holle\\TN\\3_Lehre\\R-Kurs 2026\\data project (TN)")
+dat <- read.csv2("NHANES1.csv", sep=",") #Or interactively: read.csv2(file.choose())
 
 #2. What is the dimension of the data set? How many rows (samples), and how many columns (variables) does the data set contain? What are the variable names of the data set?
 dim(dat)
@@ -332,10 +332,6 @@ dat$jobstat_lwk <- as.factor(dat$jobstat_lwk)
 dat$alc_lft <- as.factor(dat$alc_lft)
 dat$smokstat <- as.factor(dat$smokstat)
 dat$milk_month <- as.factor(dat$milk_month)
-
-#Or:
-library(Hmisc)
-vars <- Cs(hivpos, srhgnrl, srphbad_prv30d, srmhbad_prv30d, adlimp_prv30d, educ, martlst, male, ethnic, increl, asthma_ever, asthma_now, ovrwght_ever, arthrit_ever, stroke_ever, livdis_ever, cbronch_now, livdis_now, cancer_ever, rel_heartdis, rel_asthma, rel_diab, heartdis_ever, lungpath_ever, diab_lft, jobstat_lwk, wrkt_irreg, workpollut, sleep_probl, cannab_ever, harddrg_ever, smokstat, age.cat, smoke_bin, bmi_cat, age_bin)
 
 summary(dat[,vars])
 
@@ -524,7 +520,7 @@ chisq.test(table(dat[,c("heartdis_ever","sex")]))
 fisher.test(table(dat[,c("heartdis_ever","sex")]))
 prop.test(table(dat[,c("heartdis_ever","sex")]))
 prop.test(table(dat[,c("sex","heartdis_ever")]))
-#Ergibt alles dieselben p-Werte.
+#Ergibt alles dieselben p-Werte. (In diesem Fall, nicht grundsätzlich! chisq.test und prop.test liefern dieselben p-Werte, fisher.test nicht unbedingt.)
 prop.test(table(dat$sex, dat$heartdis_ever)) #alternative Syntax.
 
 #4.8 Turn the variable smokstat into a binary variable (put the non-smokers and the people who almost never smoked into one group).
@@ -612,8 +608,9 @@ dat$bmi_cat3 <- cut(dat$bmi, breaks=c(0, 18.5, 25, 30, 100), right=FALSE)
 table(dat$bmi_cat, dat$bmi_cat3) #identical
 
 #How many overweight people were actually ever diagnosed with being overweight?
-prop.table(table(dat[dat$bmi_cat2=="Overweight",]$ovrwght_ever)) #Or:
-prop.table(table(dat$ovrwght_ever, dat$bmi_cat), margin = 2)
+table(dat$ovrwght_ever[dat$bmi_cat2 == "Overweight"])
+# prop.table(table(dat[dat$bmi_cat2=="Overweight",]$ovrwght_ever)) #Or:
+# prop.table(table(dat$ovrwght_ever, dat$bmi_cat), margin = 2)
 
 #5.9 Is there a difference in diabetes prevalence between obese people diagnosed with overweight and those who were never diagnosed? What about self-rated health? How do you explain the results?
 
