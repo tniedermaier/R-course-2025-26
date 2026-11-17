@@ -6,8 +6,8 @@
 ## Task 1 (General):
 
 #1. Load the data in R.
-setwd("S:\\AG_Holle\\TN\\3_Lehre\\R-Kurs 2025_26")
-dat <- read.csv2("NHANES1.csv") #Or interactively: read.csv2(file.choose())
+setwd("S:\\AG_Holle\\TN\\3_Lehre\\R-Kurs 2026\\data project (TN)")
+dat <- read.csv2("NHANES1.csv", sep=",") #Or interactively: read.csv2(file.choose())
 
 #2. What is the dimension of the data set? How many rows (samples), and how many columns (variables) does the data set contain? What are the variable names of the data set?
 dim(dat)
@@ -200,7 +200,7 @@ chisq.test(table(dat[,c("heartdis_ever","sex")]))
 fisher.test(table(dat[,c("heartdis_ever","sex")]))
 prop.test(table(dat[,c("heartdis_ever","sex")]))
 prop.test(table(dat[,c("sex","heartdis_ever")]))
-#Ergibt alles dieselben p-Werte.
+#Ergibt alles dieselben p-Werte. (In diesem Fall, nicht grundsätzlich! chisq.test und prop.test liefern dieselben p-Werte, fisher.test nicht unbedingt.)
 prop.test(table(dat$sex, dat$heartdis_ever)) #alternative Syntax.
 
 #4.8 Turn the variable smokstat into a binary variable (put the non-smokers and the people who almost never smoked into one group).
