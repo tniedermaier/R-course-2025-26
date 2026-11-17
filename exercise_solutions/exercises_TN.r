@@ -455,7 +455,7 @@ up  <- m + qt(0.95, df = n-1) * s / sqrt(n)
 c(low, up)
 
 # Easier, and equivalent:
-t.test(x, conf.level = 0.95)$conf.int
+t.test(x, conf.level = 0.90)$conf.int
 
 
 #Repeat the procedure for the female population, with unknown variance and using a confidence level of 90%
